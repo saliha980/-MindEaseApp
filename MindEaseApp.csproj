@@ -1,13 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<!-- Target .NET 8 -->
+		<TargetFramework>net8.0</TargetFramework>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
-  </ItemGroup>
+		<!-- Enable nullable reference types -->
+		<Nullable>enable</Nullable>
+
+		<!-- Implicit using directives for common namespaces -->
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Output type -->
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="MindEaseApp.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Required for scaffolding and Razor generation -->
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+
+		<!-- Optional: add MVC runtime support -->
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="wwwroot\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>
