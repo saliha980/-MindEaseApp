@@ -1,0 +1,66 @@
+﻿@model List<MindEaseApp.Models.JournalEntry>
+
+@{
+    ViewData["Title"] = "MindEase Journal";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">🧠 MindEase – Daily Wellness Journal</h2>
+
+    <form asp-action="Add" method="post" class="card p-4 shadow">
+        <div class="mb-3">
+            <label class="form-label">How do you feel today?</label>
+            <select name="mood" class="form-select">
+                <option>😊 Happy</option>
+                <option>😄 Excited</option>
+                <option>😐 Okay</option>
+                <option>😔 Sad</option>
+                <option>😡 Angry</option>
+                <option>😨 Anxious</option>
+                <option>😴 Tired</option>
+                <option>😇 Calm</option>
+                <option>🤔 Thoughtful</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Your current feeling:</label>
+            <input type="text" name="feeling" class="form-control" placeholder="E.g., anxious, relaxed, motivated">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Reflection Title:</label>
+            <input type="text" name="title" class="form-control" placeholder="Give your reflection a title">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Write your reflection:</label>
+            <textarea name="reflection" class="form-control" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save & Get Quote</button>
+    </form>
+
+
+    <hr />
+
+    <h4 class="mt-4">Your Journal Entries:</h4>
+    @if (Model.Count == 0)
+    {
+        <p>No entries yet. Start journaling today!</p>
+    }
+    else
+    {
+        foreach (var entry in Model)
+        {
+            <div class="card my-3 p-3 border-success">
+                <b>@entry.Date.ToShortDateString()</b> — @entry.Mood <br />
+                <b>Feeling:</b> @entry.Feeling <br />
+                <b>Title:</b> @entry.Title <br />
+                <i>@entry.Reflection</i><br />
+                <span class="text-info">💬 @entry.Quote</span>
+            </div>
+
+        }
+    }
+</div>

@@ -1,0 +1,9 @@
+﻿[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "dotnet MindEaseApp.dll"
+
+[env]
+PORT = "8080"

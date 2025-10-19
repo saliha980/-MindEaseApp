@@ -1,0 +1,29 @@
+﻿@model List<MentalEase.Models.ResponseModel>
+
+<h2>All Responses</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Message</th>
+            <th>Mood</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var response in Model)
+        {
+            <tr>
+                <td>@response.Id</td>
+                <td>@response.UserName</td>
+                <td>@response.Message</td>
+                <td>@response.MoodLevel/10</td>
+                <td>@response.CreatedAt.ToString("MMM dd, yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/" class="btn btn-primary">Back to Home</a>
